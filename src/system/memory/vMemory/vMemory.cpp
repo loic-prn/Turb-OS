@@ -208,9 +208,7 @@ namespace turbo::vMemory {
 		}
 		// TODO null pointer exception
 		kernel_pagemap->PML4 = (PTable*)read_cr(3);
-		//turbo::serial::log("so far so good");
 		switchPagemap(kernel_pagemap);
-		//turbo::serial::log("so fat so bigg");
 		turbo::serial::newline();
 		isInit = true;
 	}
