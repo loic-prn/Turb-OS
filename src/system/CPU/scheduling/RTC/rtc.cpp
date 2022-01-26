@@ -11,8 +11,7 @@ namespace turbo::rtc{
     #define CMOS_OUT 0x71
 
     void init(){
-        turbo::serial::log("Lancement init RTC... OK\n");
-        printf("Lancement init RTC\n");
+        printf("Lancement init RTC... OK\n");
         getTime();
         turbo::serial::log("Fin init RTC\n");
     }
@@ -48,9 +47,34 @@ namespace turbo::rtc{
         return bcptobin(inb(CMOS_OUT));
     }
 
-    uint64_t weekDay(){
+    const char* weekDay(){
         outb(CMOS_IN,0x06);
-        return bcptobin(inb(CMOS_OUT));
+        switch (bcptobin(inb(CMOS_OUT))){
+            case 1:
+                return "Sunday";
+            
+            case 2:
+                return "Monday";
+            
+            case 3:
+                return "Tuesday";
+            
+            case 4:
+                return "Wejdayn";
+            
+            case 5:
+                return "Thursday";
+            
+            case 6:
+                return "Vendreday";
+            
+            case 7:
+                return "Papakday";
+            
+            default:
+                return "pute";
+        }
+
     }
 
     uint64_t hour(){
@@ -88,16 +112,17 @@ namespace turbo::rtc{
     }
 
     void getTime(){
-        turbo::serial::log("Lancement getTime\n");
+        //turbo::serial::log("Lancement getTime\n");
         turbo::serial::log("%.4ld/%.2ld/%.2ld %.2ld:%.2ld:%.2ld", century()*100 + year(), month(), day(), hour(), minute(), second());
         printf("%4ld/",century()*100+year());
         (month()<10) ? printf("0%ld/",month()) : printf("%2ld/",month());
         (day()<10) ? printf("0%ld - ",day()) : printf("%2ld - ",day());
+        printf("%s - ",weekDay());
         (hour()<10) ? printf("0%ld:",hour()) : printf("%2ld:",hour());
         (minute()<10) ? printf("0%ld:",minute()) : printf("%2ld:",minute());
         (second()<10) ? printf("0%ld\n",second()) : printf("%2ld\n",second());
 
-        turbo::serial::log("Fin getTime \n");
+        //turbo::serial::log("Fin getTime \n");
     }
 
 }
