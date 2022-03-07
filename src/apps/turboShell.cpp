@@ -122,8 +122,6 @@ namespace turbo::shell{
                 }else{
                     node = turbo::vfs::open(currentNode,arg);
                     currentNode = node;
-                    strcat(path,"/");
-                    strcat(path,currentNode->name);
                 }
 
                 if(!node){
