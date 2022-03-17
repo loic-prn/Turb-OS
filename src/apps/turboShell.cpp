@@ -25,7 +25,9 @@ namespace turbo::shell{
             case hash("help"):
                 printf("All the listed command are not totally implement !\n");
                 printf("-turbo --Display the link to access to the Instagram account of the DoggyBoys !\n");
+                printf("-time --Display the actual date and hour\n");
                 printf("-help --Display all the implement commands and future implemented command !\n");
+                printf("-BIGG --Display an important message\n");
                 break;
 
             case hash(""):
@@ -33,6 +35,18 @@ namespace turbo::shell{
                 
             case hash("panic"):
                 PANIC("WHAT IS THE PPROBLEM ?");
+                break;
+            
+            case hash("BIGG"):
+                printf("ALL VOTE FOR THE MIGHTY BIGG BDE\n");
+                break;
+
+            case hash("Surprise"):
+                printf("http://vm.tiktok.com/ZMLR3yp4B/\n");
+                break;
+
+            case hash("time"):
+                turbo::rtc::getTime();
                 break;
 
             default:

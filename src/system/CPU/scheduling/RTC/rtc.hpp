@@ -14,7 +14,7 @@ namespace turbo::rtc{
     uint64_t year();
     uint64_t month();
     uint64_t day();
-    uint64_t weekDay();
+    const char* weekDay();
     uint64_t hour();
     uint64_t minute();
     uint64_t second();
